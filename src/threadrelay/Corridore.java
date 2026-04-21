@@ -8,7 +8,7 @@ package threadrelay;
  *
  * @author bianconi.yurinabil
  */
-public class Corridore implements Runnable{
+public class Corridore{
     
     private boolean giocoAttivo;
     
