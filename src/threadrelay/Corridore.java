@@ -24,4 +24,15 @@ public class Corridore extends Thread {
         this.velocita = velocita;
     }
     
+    public void setProssimo(Corridore prossimo) {
+        this.prossimo = prossimo;
+    }
+    
+    public void pausa() {
+        pausa = true;
+    }
+    
+    public void ferma() {
+        stop = true;
+    }
 }
