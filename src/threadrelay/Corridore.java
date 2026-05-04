@@ -8,8 +8,14 @@ package threadrelay;
  *
  * @author bianconi.yurinabil
  */
-public class Corridore{
-    
+public class Corridore extends Thread {
+    private JProgressBar barra;
+    privae JLabel stato;
+    private int velocita;
+    private boolean pausa = false;
+    private boolean stop = false;
     private boolean giocoAttivo;
+    
+    private Corridore prossimo;
     
 }

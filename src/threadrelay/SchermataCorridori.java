@@ -180,3 +180,4 @@ public class SchermataCorridori extends JFrame {
         return etichetteStato;
     }
 }
+S
