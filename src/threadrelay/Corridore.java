@@ -17,5 +17,11 @@ public class Corridore extends Thread {
     private boolean giocoAttivo;
     
     private Corridore prossimo;
+
+    public Corridore(JProgressBar barra, privae JLabel, int velocita) {
+        this.barra = barra;
+        this.JLabel = JLabel;
+        this.velocita = velocita;
+    }
     
 }
