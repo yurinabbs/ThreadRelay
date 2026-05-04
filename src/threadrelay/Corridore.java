@@ -10,7 +10,7 @@ package threadrelay;
  */
 public class Corridore extends Thread {
     private JProgressBar barra;
-    privae JLabel stato;
+    private JLabel stato;
     private int velocita;
     private boolean pausa = false;
     private boolean stop = false;
