@@ -35,4 +35,20 @@ public class Corridore extends Thread {
     public void ferma() {
         stop = true;
     }
-}
+    
+    @Override 
+    public void run() {
+        try {
+            for (int i = 0; i <= 100 && !stop; i++) {
+             
+                while (pausa) {
+                    try {
+                        Thread.sleep(100);
+                    }
+                    catch (Exception e) {}
+                }I
+            }
+            }
+        }
+    }
+
