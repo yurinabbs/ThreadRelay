@@ -4,25 +4,29 @@
  */
 package threadrelay;
 
+import java.util.List;
+import java.util.ArrayList;
+
+
 /**
  *
  * @author bianconi.yurinabil
  */
-public class Corridore extends Thread {
-    private JProgressBar barra;
-    private JLabel stato;
+public class Corridore implements Runnable {
+    private List<Observer> observers = new ArrayList<>();
+    private int id;
     private int velocita;
     private boolean pausa = false;
     private boolean stop = false;
-    private boolean giocoAttivo;
     
     private Corridore prossimo;
 
-    public Corridore(JProgressBar barra, privae JLabel, int velocita) {
-        this.barra = barra;
-        this.JLabel = JLabel;
+    public Corridore(int id, int velocita) {
+        this.id = id;
         this.velocita = velocita;
     }
+
+
     
     public void setProssimo(Corridore prossimo) {
         this.prossimo = prossimo;
@@ -36,19 +40,26 @@ public class Corridore extends Thread {
         stop = true;
     }
     
-    @Override 
-    public void run() {
-        try {
-            for (int i = 0; i <= 100 && !stop; i++) {
-             
-                while (pausa) {
-                    try {
-                        Thread.sleep(100);
-                    }
-                    catch (Exception e) {}
-                }I
-            }
-            }
+    public void riprendi(){
+        pausa = false;
+    }
+    
+    public void addObserver(Observer o) {
+        observers.add(o);
+    }
+    
+    public void removeObserver(Observer o) {
+        observers.remove(o);
+    }
+    
+    public void removeObserver(int valore, String stato){
+        for (Observer o : observers) {
+            o.update(id, valore , stato);
         }
+    }
+    
+    public void riprendi() {
+        pausa = false;
+    }
     }
 
