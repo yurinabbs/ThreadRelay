@@ -193,39 +193,53 @@ public class SchermataCorridori extends JFrame implements Observer {
 
     }
     
-    private void aggiungiEventi() {
+        private void aggiungiEventi() {
 
-    bottoneAvvia.addActionListener(e -> {
+            // AVVIA BOTTONE CREATO DA COPILOT
+            bottoneAvvia.addActionListener(e -> {
 
-        int vel;
+                int vel;
 
-        if (selettoreVelocita.getSelectedItem().equals("Veloci")) {
-            vel = 30;
-        } else {
-            vel = 80;
-        }
+                if (selettoreVelocita.getSelectedItem().equals("Veloci")) {
+                    vel = 30;
+                } else {
+                    vel = 80;
+                }
 
-        corridori = new Corridore[4];
+                corridori = new Corridore[4];
 
-        for (int i = 0; i < 4; i++) {
+                for (int i = 0; i < 4; i++) {
 
-            corridori[i] = new Corridore(i, vel);
+                    corridori[i] = new Corridore(i, vel);
 
-            corridori[i].addObserver(this);
+                    corridori[i].addObserver(this);
 
-        }
+                }
 
-        for (int i = 0; i < 3; i++) {
+                for (int i = 0; i < 3; i++) {
 
-            corridori[i].setProssimo(corridori[i + 1]);
+                    corridori[i].setProssimo(corridori[i + 1]);
 
-        }
+                }
 
-        Thread t = new Thread(corridori[0]);
+                Thread t = new Thread(corridori[0]);
 
-        t.start();
+                t.start();
+            });
 
-    });
+                // STOP DEFINITIVO BOTTONE CREATO DA COPILOT
+            bottoneStopDefinitivo.addActionListener(e -> {
 
-}
+                    if (corridori != null) {
+
+                        for (int i = 0; i < corridori.length; i++) {
+
+                            corridori[i].ferma();
+
+                        }
+
+                    }
+
+            });
+    }
 }
