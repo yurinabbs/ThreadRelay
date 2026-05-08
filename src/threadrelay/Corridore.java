@@ -52,14 +52,50 @@ public class Corridore implements Runnable {
         observers.remove(o);
     }
     
-    public void notifyObserver(int valore, String stato){
+    public void notifyObservers(int valore, String stato){
         for (Observer o : observers) {
             o.update(id, valore , stato);
         }
     }
     
-    public void riprendi() {
-        pausa = false;
+    @Override
+    public void run() {
+        
+        for (int i = 0; i <= 100; i++) {
+            
+            if (stop) {
+                break;
+            }
+            
+            while(pausa) {
+                
+                try {
+                    Thread.sleep(100);
+                } catch (Exception e) {
+                    
+                }
+            }
+            
+            notifyObservers(i, "CORRENDO");
+            
+            try {
+                Thread.sleep(velocita);
+            } catch (Exception e) {
+                
+            }
+            
+            //passaggio del testimone
+            if (i == 90 && prossimo != null) {
+                
+                notifyObservers(i, "PASSAGGIO TESTIMONE");
+                
+                Thread t = new Thread(prossimo);
+                t.start();
+            }
+        }
+        
+        notifyObservers(100, "FINITO");
     }
-    }
+    
+}
 
