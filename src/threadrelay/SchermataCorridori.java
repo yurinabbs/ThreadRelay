@@ -31,6 +31,7 @@ public class SchermataCorridori extends JFrame implements Observer {
 
     public SchermataCorridori() {
         initComponents();
+        aggiungiEventi();
     }
 
     private void initComponents() {
@@ -180,4 +181,15 @@ public class SchermataCorridori extends JFrame implements Observer {
     public JLabel[] getEtichetteStato() {
         return etichetteStato;
     }
+    
+    @Override
+    public void update(int id, int valore, String stato) {
+
+    barreCorridori[id].setValue(valore);
+
+    barreCorridori[id].setString(valore + "%");
+
+    etichetteStato[id].setText(stato);
+
+}
 }
