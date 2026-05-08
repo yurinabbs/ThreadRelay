@@ -185,11 +185,47 @@ public class SchermataCorridori extends JFrame implements Observer {
     @Override
     public void update(int id, int valore, String stato) {
 
-    barreCorridori[id].setValue(valore);
+        barreCorridori[id].setValue(valore);
 
-    barreCorridori[id].setString(valore + "%");
+        barreCorridori[id].setString(valore + "%");
 
-    etichetteStato[id].setText(stato);
+        etichetteStato[id].setText(stato);
+
+    }
+    
+    private void aggiungiEventi() {
+
+    bottoneAvvia.addActionListener(e -> {
+
+        int vel;
+
+        if (selettoreVelocita.getSelectedItem().equals("Veloci")) {
+            vel = 30;
+        } else {
+            vel = 80;
+        }
+
+        corridori = new Corridore[4];
+
+        for (int i = 0; i < 4; i++) {
+
+            corridori[i] = new Corridore(i, vel);
+
+            corridori[i].addObserver(this);
+
+        }
+
+        for (int i = 0; i < 3; i++) {
+
+            corridori[i].setProssimo(corridori[i + 1]);
+
+        }
+
+        Thread t = new Thread(corridori[0]);
+
+        t.start();
+
+    });
 
 }
 }
