@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.SwingConstants;
 
-public class SchermataCorridori extends JFrame {
+public class SchermataCorridori extends JFrame implements Observer {
 
     private static final int NUMERO_CORRIDORI = 4;
 
@@ -27,6 +27,7 @@ public class SchermataCorridori extends JFrame {
 
     private final JProgressBar[] barreCorridori = new JProgressBar[NUMERO_CORRIDORI];
     private final JLabel[] etichetteStato = new JLabel[NUMERO_CORRIDORI];
+    private Corridore[] corridori;
 
     public SchermataCorridori() {
         initComponents();
