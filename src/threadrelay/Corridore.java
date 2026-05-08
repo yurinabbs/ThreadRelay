@@ -52,7 +52,7 @@ public class Corridore implements Runnable {
         observers.remove(o);
     }
     
-    public void removeObserver(int valore, String stato){
+    public void notifyObserver(int valore, String stato){
         for (Observer o : observers) {
             o.update(id, valore , stato);
         }
